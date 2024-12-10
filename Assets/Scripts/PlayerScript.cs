@@ -30,6 +30,7 @@ public class PlayerScript : MonoBehaviour
     private AudioSource shotSFX;
 
     private Rigidbody2D body;
+    private BoxCollider2D collider;
 
     private float horizontal;
     private float vertical;
@@ -72,7 +73,9 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        collider = GetComponent<BoxCollider2D>();
         shotSFX = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
