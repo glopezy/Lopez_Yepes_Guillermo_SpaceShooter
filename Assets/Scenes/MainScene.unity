@@ -378,6 +378,7 @@ GameObject:
   - component: {fileID: 550063434}
   - component: {fileID: 550063436}
   - component: {fileID: 550063435}
+  - component: {fileID: 550063437}
   m_Layer: 5
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
@@ -424,7 +425,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press Space to Start Shooting!
+  m_text: Press space to save the galaxy!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bb598e5278cef3c48b71f20d35e7a399, type: 2}
   m_sharedMaterial: {fileID: 2669299350885971207, guid: bb598e5278cef3c48b71f20d35e7a399, type: 2}
@@ -461,8 +462,8 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
+  m_characterSpacing: 6.32
+  m_wordSpacing: 71.41
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
@@ -503,6 +504,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550063433}
   m_CullTransparentMesh: 1
+--- !u!114 &550063437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550063433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aaf799331fcce243bbf62c6d2e616bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &926976326
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,6 +526,7 @@ GameObject:
   m_Component:
   - component: {fileID: 926976328}
   - component: {fileID: 926976327}
+  - component: {fileID: 926976329}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Untagged
@@ -537,7 +551,11 @@ MonoBehaviour:
   - {fileID: 1947127021}
   - {fileID: 1651653850}
   - {fileID: 1006642741}
-  shots: 250
+  shots: 100
+  shootId: 1
+  shotTimer: 0
+  shotRatio: 0.5
+  moveSpeed: 5
 --- !u!4 &926976328
 Transform:
   m_ObjectHideFlags: 0
@@ -557,6 +575,33 @@ Transform:
   - {fileID: 1006642741}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!50 &926976329
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926976326}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1006642740
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,6 +834,7 @@ GameObject:
   - component: {fileID: 1637189198}
   - component: {fileID: 1637189200}
   - component: {fileID: 1637189199}
+  - component: {fileID: 1637189201}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -914,6 +960,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637189197}
   m_CullTransparentMesh: 1
+--- !u!114 &1637189201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637189197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aaf799331fcce243bbf62c6d2e616bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1651653849
 GameObject:
   m_ObjectHideFlags: 0
