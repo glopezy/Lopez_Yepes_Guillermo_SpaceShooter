@@ -2,10 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Pool;
 
 public class PlayerScript : MonoBehaviour
 {
+    [SerializeField] private int lifes;
+    [SerializeField] private int score;
+    [SerializeField] private GameObject gameOverScreen;
 
     [SerializeField] private ShotScript shotPrefab;
     [SerializeField] private Transform[] spawnPoints;
@@ -23,6 +27,7 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] private float shotTimer;
     [SerializeField] private float shotRatio;
+    private AudioSource shotSFX;
 
     private Rigidbody2D body;
 
@@ -67,11 +72,17 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        shotSFX = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (lifes <= 0)
+        {
+            Time.timeScale = 0f;
+            gameOverScreen.SetActive(true);
+        }
 
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
@@ -100,17 +111,21 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && shotTimer > shotRatio)
         {
+
             if (shootId == 1)
             {
                 ShotScript shotCopy = pool.Get();
                 shotCopy.gameObject.SetActive(true);
                 shotCopy.transform.position = transform.position;
+                shotSFX.Play();
             }
 
             else if (shootId == 2)
             {
                 Instantiate(shotPrefab, spawnPoints[0].transform.position, Quaternion.identity);
                 Instantiate(shotPrefab, spawnPoints[2].transform.position, Quaternion.identity);
+                shotSFX.Play();
+                shotSFX.Play();
             }
 
             else if (shootId == 3)
@@ -118,12 +133,16 @@ public class PlayerScript : MonoBehaviour
                 Instantiate(shotPrefab, spawnPoints[0].transform.position, Quaternion.identity);
                 Instantiate(shotPrefab, spawnPoints[1].transform.position, Quaternion.identity);
                 Instantiate(shotPrefab, spawnPoints[2].transform.position, Quaternion.identity);
+                shotSFX.Play();
+                shotSFX.Play();
+                shotSFX.Play();
             }
             else if (shootId == 4)
             {
                 StartCoroutine(Espiral());
             }
 
+            
             shotTimer = 0;
 
         }
@@ -143,6 +162,7 @@ public class PlayerScript : MonoBehaviour
             shotCopy.gameObject.SetActive(true);
             shotCopy.transform.position = transform.position;
             shotCopy.transform.eulerAngles = new Vector3(0f, 0f, i);
+            shotSFX.Play();
 
             //wait! they dont love you like a love you
             yield return new WaitForSeconds(0.001f);
