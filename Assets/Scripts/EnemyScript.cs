@@ -13,7 +13,8 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private EnemyShotScript shotPrefab;
     private ObjectPool<EnemyShotScript> pool;
 
-    private AudioSource shotSFX;
+    [SerializeField] private AudioSource shotSFX;
+    [SerializeField] private AudioSource explodeSFX;
 
     private Rigidbody2D body;
     private BoxCollider2D collider;
@@ -81,4 +82,21 @@ public class EnemyScript : MonoBehaviour
 
         
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Shot(Clone)" || collision.gameObject.name == "PlayerShip")
+        {
+            StartCoroutine(EnemyDeath());
+        }
+        
+    }
+
+    private IEnumerator EnemyDeath()
+    {
+        explodeSFX.Play();
+        yield return new WaitForSeconds(0.5f); 
+        this.gameObject.SetActive(false);
+    }
+    
 }
