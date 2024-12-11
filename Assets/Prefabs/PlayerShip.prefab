@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 4219831486686872732}
   - component: {fileID: 975884539383700967}
   - component: {fileID: 3159942185054740847}
+  - component: {fileID: 5620115374975221372}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Untagged
@@ -201,8 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6581e31033daee34786a3e460f56eaec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifes: 0
-  score: 0
   gameOverScreen: {fileID: 0}
   shotPrefab: {fileID: 8277503837422713185, guid: fa798f9e191149949bfddbe1b2bf6b26, type: 3}
   spawnPoints:
@@ -216,6 +215,8 @@ MonoBehaviour:
   shotSFX: {fileID: 0}
   explodeSFX: {fileID: 0}
   moveSpeed: 5
+  lifes: 0
+  score: 0
 --- !u!50 &6507158990061577961
 Rigidbody2D:
   serializedVersion: 5
@@ -483,6 +484,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5620115374975221372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5396701155725118432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4863b3ae64250684cbaae04aa358eb6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7968349290039753565
 GameObject:
   m_ObjectHideFlags: 0

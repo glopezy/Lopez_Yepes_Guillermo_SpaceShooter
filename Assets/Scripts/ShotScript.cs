@@ -31,4 +31,14 @@ public class ShotScript : MonoBehaviour
             myPool.Release(this);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Enemy" || collision.gameObject.name == "Enemy(Clone)")
+        {
+            timer = 0;
+            myPool.Release(this);
+        }
+        
+    }
 }

@@ -21,7 +21,7 @@ public class SpawnerScript : MonoBehaviour
 
         if (timer > cicle)
         {
-            Vector3 randomSpawnPosition =  new Vector3(Random.Range(-4,2), Random.Range(-4, 1), 0);
+            Vector3 randomSpawnPosition =  new Vector3(Random.Range(-2.0f,2.0f), Random.Range(-4.0f, 1.0f), 0);
             Instantiate(enemyPrefab, randomSpawnPosition, Quaternion.identity);
             timer = 0;
         }

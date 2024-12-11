@@ -59,7 +59,7 @@ public class EnemyScript : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         shotSFX = GetComponent<AudioSource>();
-        moveCicle = UnityEngine.Random.Range(0f, 3f);
+        moveCicle = UnityEngine.Random.Range(0.0f, 2.0f);
     }
 
     // Update is called once per frame
