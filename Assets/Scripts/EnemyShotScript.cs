@@ -31,4 +31,14 @@ public class EnemyShotScript : MonoBehaviour
             myPool.Release(this);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "PlayerShip" )
+        {
+            timer = 0;
+            myPool.Release(this);
+        }
+
+    }
 }

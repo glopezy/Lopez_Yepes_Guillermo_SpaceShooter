@@ -1708,9 +1708,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 6402114308325128256, guid: 3ac7f1dc9c2417c4bb11ebf1e590affc, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402114308325128256, guid: 3ac7f1dc9c2417c4bb11ebf1e590affc, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402114308325128256, guid: 3ac7f1dc9c2417c4bb11ebf1e590affc, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7267611524874017245, guid: 3ac7f1dc9c2417c4bb11ebf1e590affc, type: 3}
       propertyPath: lifes
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7267611524874017245, guid: 3ac7f1dc9c2417c4bb11ebf1e590affc, type: 3}
       propertyPath: score
@@ -1718,7 +1730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7267611524874017245, guid: 3ac7f1dc9c2417c4bb11ebf1e590affc, type: 3}
       propertyPath: shots
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7267611524874017245, guid: 3ac7f1dc9c2417c4bb11ebf1e590affc, type: 3}
       propertyPath: titles
@@ -1734,7 +1746,7 @@ PrefabInstance:
       objectReference: {fileID: 302198565}
     - target: {fileID: 7267611524874017245, guid: 3ac7f1dc9c2417c4bb11ebf1e590affc, type: 3}
       propertyPath: shotRatio
-      value: 0.35
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7267611524874017245, guid: 3ac7f1dc9c2417c4bb11ebf1e590affc, type: 3}
       propertyPath: explodeSFX

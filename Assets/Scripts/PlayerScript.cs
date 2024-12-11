@@ -177,8 +177,8 @@ public class PlayerScript : MonoBehaviour
             shotCopy.transform.eulerAngles = new Vector3(0f, 0f, i);
             shotSFX.Play();
 
-            //wait! they dont love you like a love you
-            yield return new WaitForSeconds(0.001f);
+            //wait! they dont love you like I love you
+            yield return new WaitForSeconds(0.01f);
 
         }
        
@@ -190,7 +190,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.gameObject.name == "Enemy" ||  collision.gameObject.name == "Enemy(Clone)" || collision.gameObject.name == "EnemyShot(Clone)")
         {
-            lifes--;
+            StartCoroutine(PlayerHit());
         }
 
         if (collision.gameObject.name == "Powerup(Clone)")
@@ -208,13 +208,27 @@ public class PlayerScript : MonoBehaviour
     {
         explodeSFX.Play();
         gameOverScreen.SetActive(true);
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(1);
         this.gameObject.SetActive(false);
         Time.timeScale = 0.5f;
         yield return new WaitForSeconds(1);
         Time.timeScale = 0.0f;
 
+    }
 
-
+    private IEnumerator PlayerHit()
+    {
+        lifes--;
+        explodeSFX.Play();
+        foreach (SpriteRenderer c in GetComponentsInChildren<SpriteRenderer>())
+        {
+            c.material.color = Color.red;
+            yield return new WaitForSeconds(0.25f);
+            c.material.color = Color.white;
+            yield return new WaitForSeconds(0.25f);
+            c.material.color = Color.red;
+            yield return new WaitForSeconds(0.25f);
+            c.material.color = Color.white;
+        }
     }
 }

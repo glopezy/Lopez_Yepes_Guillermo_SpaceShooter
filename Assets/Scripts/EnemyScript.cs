@@ -136,8 +136,8 @@ public class EnemyScript : MonoBehaviour
     private IEnumerator EnemyDeath()
     {
         explodeSFX.Play();
+        player.score += 100;
 
-        
 
         if (powerup <= chance)
         {
@@ -147,7 +147,7 @@ public class EnemyScript : MonoBehaviour
 
         }
 
-        player.score += 100;
+        
         yield return new WaitForSeconds(0.5f);    
 
         this.gameObject.SetActive(false);
