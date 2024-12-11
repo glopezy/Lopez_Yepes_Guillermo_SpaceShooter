@@ -1,14 +1,15 @@
 using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using Unity.VisualScripting;
 using UnityEngine.Audio;
 using UnityEngine.Pool;
 
 public class EnemyScript : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float moveCicle;
+    private float moveCicle;
     [SerializeField] private float shotCicle;
     [SerializeField] private EnemyShotScript shotPrefab;
     private ObjectPool<EnemyShotScript> pool;
@@ -23,6 +24,9 @@ public class EnemyScript : MonoBehaviour
     private float timer;
     private float timer2;
     private Vector3 direction = new Vector3(0,1,0);
+
+    // to change score
+    [SerializeField] PlayerScript player;
 
 
 
@@ -55,6 +59,7 @@ public class EnemyScript : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         shotSFX = GetComponent<AudioSource>();
+        moveCicle = UnityEngine.Random.Range(0f, 3f);
     }
 
     // Update is called once per frame
@@ -97,6 +102,7 @@ public class EnemyScript : MonoBehaviour
         explodeSFX.Play();
         yield return new WaitForSeconds(0.5f); 
         this.gameObject.SetActive(false);
+        player.score += 100;
     }
     
 }

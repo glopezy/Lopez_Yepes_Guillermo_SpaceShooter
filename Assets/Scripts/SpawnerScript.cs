@@ -8,7 +8,7 @@ public class SpawnerScript : MonoBehaviour
     [SerializeField] private float cicle;
     [SerializeField] private float difficulty;
     [SerializeField] private EnemyScript enemyPrefab;
-
+   
     
 
     // Update is called once per frame

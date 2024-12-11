@@ -210,11 +210,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  moveCicle: 1
   shotCicle: 0.75
   shotPrefab: {fileID: 447244387802352895, guid: e56c19e1cc89785478a5d2c954f00121, type: 3}
   shotSFX: {fileID: 2584557481889970431}
   explodeSFX: {fileID: 6365726284430741933}
+  player: {fileID: 7267611524874017245, guid: 3ac7f1dc9c2417c4bb11ebf1e590affc, type: 3}
 --- !u!82 &2584557481889970431
 AudioSource:
   m_ObjectHideFlags: 0

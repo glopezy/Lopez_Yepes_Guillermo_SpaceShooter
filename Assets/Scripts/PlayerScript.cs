@@ -7,8 +7,7 @@ using UnityEngine.Pool;
 
 public class PlayerScript : MonoBehaviour
 {
-    [SerializeField] private int lifes;
-    [SerializeField] private int score;
+    
     [SerializeField] private GameObject gameOverScreen;
 
     [SerializeField] private ShotScript shotPrefab;
@@ -39,6 +38,12 @@ public class PlayerScript : MonoBehaviour
     private float moveLimiter = 0.7f;
 
     [SerializeField] private float moveSpeed = 5.0f;
+
+    //bad practice but useful in this case
+    [SerializeField] public int lifes;
+    [SerializeField] public int score;
+
+
 
     private void Awake()
     {
