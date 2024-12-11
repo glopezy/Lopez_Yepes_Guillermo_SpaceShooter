@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-guid: bf8ddafe189b90247b484ca8b8e3ceca
-AssetOrigin:
-  serializedVersion: 1
-  productId: 133395
-  packageName: 2D Pixel Spaceships (2 Small Ships + Explosions)
-  packageVersion: 1.0
-  assetPath: Assets/2D Pixel Spaceships (2 Small Ships + Explosions)/Sprites/ship1.png
-  uploadId: 279526
+guid: e6bd353cbbc518241bc374d60182a87a
 TextureImporter:
   internalIDToNameTable:
   - first:

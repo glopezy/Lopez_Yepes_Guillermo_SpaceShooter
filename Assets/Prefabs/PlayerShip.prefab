@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6581e31033daee34786a3e460f56eaec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifes: 1
+  lifes: 0
   score: 0
   gameOverScreen: {fileID: 0}
   shotPrefab: {fileID: 8277503837422713185, guid: fa798f9e191149949bfddbe1b2bf6b26, type: 3}
@@ -213,6 +213,8 @@ MonoBehaviour:
   shootId: 1
   shotTimer: 0
   shotRatio: 0.5
+  shotSFX: {fileID: 0}
+  explodeSFX: {fileID: 0}
   moveSpeed: 5
 --- !u!50 &6507158990061577961
 Rigidbody2D:
@@ -394,9 +396,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: c1298d3994d304a15be6a3a759c09fea, type: 3}
+  m_Resource: {fileID: 8300000, guid: c1298d3994d304a15be6a3a759c09fea, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

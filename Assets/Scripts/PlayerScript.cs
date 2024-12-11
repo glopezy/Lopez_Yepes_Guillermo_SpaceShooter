@@ -24,10 +24,12 @@ public class PlayerScript : MonoBehaviour
 
     private ObjectPool<ShotScript> pool;
 
-
     [SerializeField] private float shotTimer;
     [SerializeField] private float shotRatio;
-    private AudioSource shotSFX;
+
+    [SerializeField] private AudioSource shotSFX;
+    [SerializeField] private AudioSource explodeSFX;
+
 
     private Rigidbody2D body;
     private BoxCollider2D collider;
@@ -74,7 +76,6 @@ public class PlayerScript : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
-        shotSFX = GetComponent<AudioSource>();
 
     }
 
@@ -83,8 +84,10 @@ public class PlayerScript : MonoBehaviour
     {
         if (lifes <= 0)
         {
-            Time.timeScale = 0f;
-            gameOverScreen.SetActive(true);
+            
+            StartCoroutine(PlayerDeath());
+            
+            
         }
 
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -174,5 +177,27 @@ public class PlayerScript : MonoBehaviour
        
         
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Enemy" ||  collision.gameObject.name == "Enemy(Clone)" || collision.gameObject.name == "EnemyShot(Clone)")
+        {
+            lifes--;
+        }
+    }
+
+    private IEnumerator PlayerDeath()
+    {
+        explodeSFX.Play();
+        gameOverScreen.SetActive(true);
+        yield return new WaitForSeconds(0.7f);
+        this.gameObject.SetActive(false);
+        Time.timeScale = 0.5f;
+        yield return new WaitForSeconds(1);
+        Time.timeScale = 0.0f;
+
+
+
     }
 }

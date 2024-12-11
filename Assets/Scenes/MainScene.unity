@@ -183,6 +183,16 @@ Transform:
   - {fileID: 1662549618}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &302198564 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3159942185054740847, guid: 3ac7f1dc9c2417c4bb11ebf1e590affc, type: 3}
+  m_PrefabInstance: {fileID: 2731867870163690714}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &302198565 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 975884539383700967, guid: 3ac7f1dc9c2417c4bb11ebf1e590affc, type: 3}
+  m_PrefabInstance: {fileID: 2731867870163690714}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &511054534
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,6 +1170,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3159942185054740847, guid: 3ac7f1dc9c2417c4bb11ebf1e590affc, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: fa98f89c0057e4d9ca85248c97a35949, type: 3}
+    - target: {fileID: 3159942185054740847, guid: 3ac7f1dc9c2417c4bb11ebf1e590affc, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fa98f89c0057e4d9ca85248c97a35949, type: 3}
     - target: {fileID: 5396701155725118432, guid: 3ac7f1dc9c2417c4bb11ebf1e590affc, type: 3}
       propertyPath: m_Name
       value: PlayerShip
@@ -1204,6 +1222,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 7267611524874017245, guid: 3ac7f1dc9c2417c4bb11ebf1e590affc, type: 3}
+      propertyPath: lifes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267611524874017245, guid: 3ac7f1dc9c2417c4bb11ebf1e590affc, type: 3}
+      propertyPath: shotSFX
+      value: 
+      objectReference: {fileID: 302198565}
+    - target: {fileID: 7267611524874017245, guid: 3ac7f1dc9c2417c4bb11ebf1e590affc, type: 3}
+      propertyPath: explodeSFX
+      value: 
+      objectReference: {fileID: 302198564}
     - target: {fileID: 7267611524874017245, guid: 3ac7f1dc9c2417c4bb11ebf1e590affc, type: 3}
       propertyPath: gameOverScreen
       value: 
