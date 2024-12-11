@@ -7,20 +7,22 @@ using UnityEngine.Pool;
 
 public class PlayerScript : MonoBehaviour
 {
-    
+    [SerializeField] private GameObject titles;
     [SerializeField] private GameObject gameOverScreen;
+
+
 
     [SerializeField] private ShotScript shotPrefab;
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private int shots;
 
-    [SerializeField] private int shootId;
+    [SerializeField] public int shootId;
     /* 1 normal
      * 2 double
      * 3 triple
      * 4 spiral
      */
-
+     
     private ObjectPool<ShotScript> pool;
 
     [SerializeField] private float shotTimer;
@@ -81,6 +83,7 @@ public class PlayerScript : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
+        // shootId = 1;
 
     }
 
@@ -89,9 +92,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (lifes <= 0)
         {
-            
             StartCoroutine(PlayerDeath());
-            
             
         }
 
@@ -122,6 +123,7 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && shotTimer > shotRatio)
         {
+            titles.SetActive(false);
 
             if (shootId == 1)
             {
@@ -189,6 +191,16 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.name == "Enemy" ||  collision.gameObject.name == "Enemy(Clone)" || collision.gameObject.name == "EnemyShot(Clone)")
         {
             lifes--;
+        }
+
+        if (collision.gameObject.name == "Powerup(Clone)")
+        {
+            shootId++;
+
+            if (shootId >= 4)
+            {
+                shootId = 4;
+            }
         }
     }
 

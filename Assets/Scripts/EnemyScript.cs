@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine.Audio;
 using UnityEngine.Pool;
+using UnityEngine.UIElements;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -14,8 +15,11 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private EnemyShotScript shotPrefab;
     private ObjectPool<EnemyShotScript> pool;
 
+    [SerializeField] private PowerupScript powerupPrefab;
+
     [SerializeField] private AudioSource shotSFX;
     [SerializeField] private AudioSource explodeSFX;
+    [SerializeField] private AudioSource powerupSFX;
 
     private Rigidbody2D body;
     private BoxCollider2D collider;
@@ -28,7 +32,8 @@ public class EnemyScript : MonoBehaviour
     // to change score
     [SerializeField] PlayerScript player;
 
-
+    [SerializeField] private int chance;
+    [SerializeField] private int powerup;
 
     private void Awake()
     {
@@ -60,6 +65,11 @@ public class EnemyScript : MonoBehaviour
         collider = GetComponent<BoxCollider2D>();
         shotSFX = GetComponent<AudioSource>();
         moveCicle = UnityEngine.Random.Range(0.0f, 2.0f);
+        moveCicle = UnityEngine.Random.Range(0.70f, 1.00f);
+        powerup = UnityEngine.Random.Range(1, 101);
+        // powerup = 30;
+
+        
     }
 
     // Update is called once per frame
@@ -85,7 +95,33 @@ public class EnemyScript : MonoBehaviour
             timer2 = 0;
         }
 
-        
+        /* 
+         * When an enemy dies there is a chance they drop a powerup. This probability decreases every time. 
+         * Powerups scale and change the shoot id from the player
+         * Chances:
+         * 35% - 25% - 10% 
+         * 
+         */
+
+        if (player.shootId == 1)
+        {
+            chance = 35;
+
+        }
+        else if (player.shootId == 2)
+        {
+            chance = 25;
+        }
+        else if (player.shootId == 3)
+        {
+            chance = 10;
+        }
+        else if (player.shootId == 4)
+        {
+            chance = 0;
+        }
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -100,9 +136,22 @@ public class EnemyScript : MonoBehaviour
     private IEnumerator EnemyDeath()
     {
         explodeSFX.Play();
-        yield return new WaitForSeconds(0.5f); 
-        this.gameObject.SetActive(false);
+
+        
+
+        if (powerup <= chance)
+        {
+            powerupSFX.Play();
+            Instantiate(powerupPrefab, transform.position, Quaternion.identity);
+            
+
+        }
+
         player.score += 100;
+        yield return new WaitForSeconds(0.5f);    
+
+        this.gameObject.SetActive(false);
+        
     }
     
 }

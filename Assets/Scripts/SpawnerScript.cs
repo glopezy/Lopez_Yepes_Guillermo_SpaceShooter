@@ -22,7 +22,11 @@ public class SpawnerScript : MonoBehaviour
         if (timer > cicle)
         {
             Vector3 randomSpawnPosition =  new Vector3(Random.Range(-2.0f,2.0f), Random.Range(-4.0f, 1.0f), 0);
-            Instantiate(enemyPrefab, randomSpawnPosition, Quaternion.identity);
+            for (int i = 0; i <= difficulty; i ++)
+            {
+                Instantiate(enemyPrefab, randomSpawnPosition, Quaternion.identity);
+            }
+            
             timer = 0;
         }
 
@@ -31,7 +35,8 @@ public class SpawnerScript : MonoBehaviour
             difficulty++;
             if (cicle > 0.5f)
             {
-                cicle -= 0.25f;
+                cicle -= 0.5f;
+
             }
             
 
