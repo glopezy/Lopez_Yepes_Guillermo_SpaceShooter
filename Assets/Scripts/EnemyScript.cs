@@ -24,10 +24,12 @@ public class EnemyScript : MonoBehaviour
     private Rigidbody2D body;
     private BoxCollider2D collider;
 
+    [SerializeField] Animator animator;
+
 
     private float timer;
     private float timer2;
-    private Vector3 direction = new Vector3(0,1,0);
+    private Vector3 direction = new Vector3(1,0,0);
 
     // to change score
     [SerializeField] PlayerScript player;
@@ -137,7 +139,7 @@ public class EnemyScript : MonoBehaviour
     {
         explodeSFX.Play();
         player.score += 100;
-
+        animator.Play("Death");
 
         if (powerup <= chance)
         {
@@ -148,7 +150,7 @@ public class EnemyScript : MonoBehaviour
         }
 
         
-        yield return new WaitForSeconds(0.5f);    
+        yield return new WaitForSeconds(0.3f);    
 
         this.gameObject.SetActive(false);
         

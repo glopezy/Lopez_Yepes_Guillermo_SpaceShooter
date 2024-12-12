@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnerScript : MonoBehaviour
@@ -21,10 +23,10 @@ public class SpawnerScript : MonoBehaviour
 
         if (timer > cicle)
         {
-            Vector3 randomSpawnPosition =  new Vector3(Random.Range(-2.0f,2.0f), Random.Range(-4.0f, 1.0f), 0);
+            
             for (int i = 0; i <= difficulty; i ++)
             {
-                Instantiate(enemyPrefab, randomSpawnPosition, Quaternion.identity);
+                StartCoroutine(Spawn());
             }
             
             timer = 0;
@@ -35,6 +37,7 @@ public class SpawnerScript : MonoBehaviour
             difficulty++;
             if (cicle > 0.5f)
             {
+                
                 cicle -= 0.5f;
 
             }
@@ -42,5 +45,17 @@ public class SpawnerScript : MonoBehaviour
 
         }
 
+
+
     }
+
+    private IEnumerator Spawn()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Vector3 randomSpawnPosition = new Vector3(Random.Range(0f, 9.0f), Random.Range(-4.0f, 5.0f), 0);
+        Instantiate(enemyPrefab, randomSpawnPosition, Quaternion.Euler(0, 0, 90));
+        
+    }
+
+
 }
