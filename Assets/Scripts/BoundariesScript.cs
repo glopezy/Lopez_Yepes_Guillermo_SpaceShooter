@@ -13,8 +13,8 @@ public class BoundariesScript : MonoBehaviour
     {
         //these values are negative
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        objectWidth = transform.GetComponentInChildren<SpriteRenderer>().bounds.size.x / 2;
-        objectHeight = transform.GetComponentInChildren<SpriteRenderer>().bounds.size.y / 2;
+        objectWidth = transform.GetComponent<SpriteRenderer>().bounds.size.x / 2;
+        objectHeight = transform.GetComponent<SpriteRenderer>().bounds.size.y / 2;
     }
 
     // Update is called once per frame
