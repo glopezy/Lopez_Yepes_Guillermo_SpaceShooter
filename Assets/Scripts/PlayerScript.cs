@@ -83,6 +83,7 @@ public class PlayerScript : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
+        score = 0;
         // shootId = 1;
 
     }
@@ -178,7 +179,7 @@ public class PlayerScript : MonoBehaviour
             shotSFX.Play();
 
             //wait! they dont love you like I love you
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.1f);
 
         }
        

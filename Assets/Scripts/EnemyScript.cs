@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine.Audio;
 using UnityEngine.Pool;
 using UnityEngine.UIElements;
+using UnityEngine.XR;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class EnemyScript : MonoBehaviour
     private Vector3 direction = new Vector3(1,0,0);
 
     // to change score
-    [SerializeField] PlayerScript player;
+    [SerializeField] private PlayerScript player;
 
     [SerializeField] private int chance;
     [SerializeField] private int powerup;
@@ -71,7 +72,9 @@ public class EnemyScript : MonoBehaviour
         powerup = UnityEngine.Random.Range(1, 101);
         // powerup = 30;
 
-        
+        //Only way to find the player
+        player = GameObject.Find("PlayerShip").GetComponent<PlayerScript>();
+
     }
 
     // Update is called once per frame
@@ -130,6 +133,7 @@ public class EnemyScript : MonoBehaviour
     {
         if (collision.gameObject.name == "Shot(Clone)" || collision.gameObject.name == "PlayerShip")
         {
+            player.score += 100;
             StartCoroutine(EnemyDeath());
         }
         
@@ -138,7 +142,7 @@ public class EnemyScript : MonoBehaviour
     private IEnumerator EnemyDeath()
     {
         explodeSFX.Play();
-        player.score += 100;
+        
         animator.Play("Death");
 
         if (powerup <= chance)
@@ -152,7 +156,7 @@ public class EnemyScript : MonoBehaviour
         
         yield return new WaitForSeconds(0.3f);    
 
-        this.gameObject.SetActive(false);
+         this.gameObject.SetActive(false);
         
     }
     
