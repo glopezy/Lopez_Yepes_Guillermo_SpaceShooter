@@ -45,7 +45,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] public int lifes;
     [SerializeField] public int score;
 
-
+    [SerializeField] SpriteRenderer sprite;
+    [SerializeField] Animator animator;
 
     private void Awake()
     {
@@ -208,12 +209,13 @@ public class PlayerScript : MonoBehaviour
     private IEnumerator PlayerDeath()
     {
         explodeSFX.Play();
+        animator.Play("Death");
         gameOverScreen.SetActive(true);
+        
         yield return new WaitForSeconds(1);
         this.gameObject.SetActive(false);
         Time.timeScale = 0.5f;
-        yield return new WaitForSeconds(1);
-        Time.timeScale = 0.0f;
+        
 
     }
 
@@ -221,15 +223,14 @@ public class PlayerScript : MonoBehaviour
     {
         lifes--;
         explodeSFX.Play();
-        foreach (SpriteRenderer c in GetComponentsInChildren<SpriteRenderer>())
-        {
-            c.material.color = Color.red;
-            yield return new WaitForSeconds(0.25f);
-            c.material.color = Color.white;
-            yield return new WaitForSeconds(0.25f);
-            c.material.color = Color.red;
-            yield return new WaitForSeconds(0.25f);
-            c.material.color = Color.white;
-        }
+        
+        sprite.material.color = Color.red;
+        yield return new WaitForSeconds(0.25f);
+        sprite.material.color = Color.white;
+        yield return new WaitForSeconds(0.25f);
+        sprite.material.color = Color.red;
+        yield return new WaitForSeconds(0.25f);
+        sprite.material.color = Color.white;
+        
     }
 }
